@@ -4,14 +4,12 @@ server {
 
     index index.php index.html index.htm;
 
-    location /tryit {
-        try_files $uri $uri/ /tryit.html;
-    }
-
     location ~ \.php$ {
-        try_files $uri =404;
         fastcgi_pass php:9000;
         fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-        include fastcgi_params;
+        include fastcgi_params;     
+
     }
-}
+} 
+
+
