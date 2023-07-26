@@ -8,9 +8,12 @@ services:
             - ./nginx.conf:/etc/nginx/conf.d/nginx.conf
             - ./app:/app
     php:
-        build:
-            context: .
-            dockerfile: PHP.Dockerfile
+        # build:
+        #     context: .
+        #     dockerfile: PHP.Dockerfile
+        image: php:7.4-fpm
+        environment:
+            - TZ=America/New_York # set timezone
         volumes:
             - ./app:/app
     mysql:
@@ -27,8 +30,3 @@ services:
             - 3306:3306
 volumes:
     mysqldata: {}
-
-
-
-
-
